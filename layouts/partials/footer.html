@@ -1,0 +1,22 @@
+<!-- Footer -->
+<footer class="footer container">
+    {{ if .Site.Params.footer.content }}
+    <div class="copyright">{{ $.Site.Params.footer.content | safeHTML }}</div>
+    {{ end }}
+    {{ if .Site.Params.footer.links }}
+    <nav>
+        {{ range $link := $.Site.Params.footer.links }}
+        <a class="subtle-link" href="{{ $link.url | relURL }}"{{ if $link.new_window }} target="_blank" rel="noopener"{{ end }}>{{ $link.label }}</a>
+        {{ end }}
+    </nav>
+    {{ end }}
+    {{ if .Site.Params.footer.has_social }}
+    <div class="social-links">
+        {{ range $link := $.Site.Params.footer.social_links }}
+        {{ if $link }}
+        <a class="subtle-link" href="{{ $link.url | relURL }}"{{ if $link.new_window }} target="_blank" rel="noopener"{{ end }}>{{ $link.label }}</a>
+        {{ end }}
+        {{ end }}
+    </div>
+    {{ end }}
+</footer>
